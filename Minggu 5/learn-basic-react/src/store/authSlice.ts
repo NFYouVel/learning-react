@@ -1,6 +1,8 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit'
 import type { UserInfo } from '../Types'
 
+
+
 export type AuthSlice = {
     userInfo?: UserInfo
     isLoading: boolean
@@ -20,6 +22,7 @@ export const authSlice = createSlice({
         }
     }
 })
-
+export const { setUserInfo } = authSlice.actions
+export const authReducer = authSlice.reducer
 export const authActions = authSlice.actions;
-export const authReducer = authSlice.reducer;
+
