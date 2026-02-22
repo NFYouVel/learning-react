@@ -1,8 +1,30 @@
-import { useAppSelector } from '../app/store'
+import React, { useEffect } from 'react'
+import { useAppDispatch, useAppSelector } from '../app/store'
+import { fetchPosts } from '../features/posts/postSlice'
 
-function Home() {
-  const { user } = useAppSelector(state => state.auth)
-  return <h1>Welcome, {user?.name || 'User'}</h1>
+const HomePage: React.FC = () => {
+  const dispatch = useAppDispatch()
+  const { data: posts, loading, error } = useAppSelector(state => state.posts)
+
+
+  useEffect(() => {
+    dispatch(fetchPosts())
+  }, [dispatch])
+
+  if (loading) return <p>Loading...</p>
+  if (error) return <p>{error}</p>
+
+  return (
+    <div>
+      <h2>Post List</h2>
+      {posts?.map(post => (
+        <div key={post.id}>
+          <h3>{post.title}</h3>
+          <p>{post.content}</p>
+        </div>
+      ))}
+    </div>
+  )
 }
 
-export default Home
+export default HomePage
