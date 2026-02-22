@@ -15,7 +15,7 @@ export async function loginRequest(email: string, password: string): Promise<Log
     if (!response.ok) {
         throw new Error('Login failed')
     }
-    
+
     return response.json()
 }
 
@@ -32,7 +32,9 @@ export async function getPostsRequest() {
         throw new Error('Get posts failed')
     }
 
-    return response.json()
+    const data = await response.json()
+    console.log('API posts response:', data) // <--- liat ini
+    return data
 }
 
 export async function getPostDetails(postID: string) {

@@ -22,7 +22,8 @@ const initialState: PostsState = {
 // async thunk
 export const fetchPosts = createAsyncThunk('posts/fetchPosts', async () => {
   const response = await getPostsRequest()
-  return response.data // kalau backend return { data: [...] }
+  console.log('Thunk payload:', response.records)
+  return response.records  // ambil array langsung dari object
 })
 
 const postsSlice = createSlice({

@@ -17,7 +17,7 @@ const HomePage: React.FC = () => {
   return (
     <div>
       <h2>Post List</h2>
-      {posts?.map(post => (
+      {posts.map(post => (
         <div key={post.id}>
           <h3>{post.title}</h3>
           <p>{post.content}</p>
