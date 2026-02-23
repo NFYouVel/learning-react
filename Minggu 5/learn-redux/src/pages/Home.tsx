@@ -4,15 +4,15 @@ import { fetchPosts } from '../features/posts/postSlice'
 
 const HomePage: React.FC = () => {
   const dispatch = useAppDispatch()
-  const { data: posts, loading, error } = useAppSelector(state => state.posts)
+  const { data: posts } = useAppSelector(state => state.posts)
 
 
   useEffect(() => {
     dispatch(fetchPosts())
   }, [dispatch])
 
-  if (loading) return <p>Loading...</p>
-  if (error) return <p>{error}</p>
+  // if (loading) return <p>Loading...</p>
+  // if (error) return <p>{error}</p>
 
   return (
     <div>

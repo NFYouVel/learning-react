@@ -5,7 +5,7 @@ export interface LoginResponse {
     refreshToken: string
 }
 
-export async function loginRequest(email: string, password: string): Promise<LoginResponse> {
+export async function loginRequest(email: string, password: string) {
     const response = await fetch(`${BASE_URL}/auth/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -50,4 +50,16 @@ export async function getPostDetails(postID: string) {
     }
 
     return response.json()
+}
+
+export async function fetchProfile(token: string) {
+  const response = await fetch('/api/auth/me', {
+    method: 'GET',
+    headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+  })
+
+  if (!response.ok) throw new Error('Failed to fetch profile')
+
+  const data = await response.json()
+  return data.user
 }

@@ -6,7 +6,7 @@ import type { TypedUseSelectorHook } from 'react-redux'
 
 export const store = configureStore({
   reducer: { 
-    auth: authReducer ,
+    auth: authReducer,
     posts: postReducer
   }
 })

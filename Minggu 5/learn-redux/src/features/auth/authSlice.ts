@@ -1,5 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-import { loginAPI, fetchProfile } from './authService'
+import { loginAPI } from './authService'
+import { fetchProfile } from '../../services/api'
+
 import type { LoginPayload, UserProfile } from './authService'
 import type { LoginResponse } from '../../services/api'
 
